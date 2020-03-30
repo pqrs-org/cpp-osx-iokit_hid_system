@@ -1,2 +1,2 @@
 catchorg/Catch2
-foonathan/type_safe
+pqrs-org/cpp-osx-iokit_types
