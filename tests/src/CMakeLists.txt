@@ -13,6 +13,7 @@ project (test)
 
 add_executable(
   test
+  dummy.cpp
   test.cpp
 )
 
