@@ -193,8 +193,15 @@ constexpr key_code key_code_keyboard_right_shift(0x3c);
 constexpr key_code key_code_keyboard_right_alt(0x3d);
 constexpr key_code key_code_keyboard_right_gui(0x36);
 
+constexpr key_code key_code_apple_vendor_keyboard_dashboard(0x82);
+constexpr key_code key_code_apple_vendor_keyboard_function(0x3f);
+constexpr key_code key_code_apple_vendor_keyboard_launchpad(0x83);
+constexpr key_code key_code_apple_vendor_keyboard_expose_all(0xa0);
+
+constexpr key_code key_code_apple_vendor_top_case_keyboard_fn(0x3f); // apple_vendor_top_case_keyboard_fn == apple_vendor_keyboard_function
+
 //
-// iokit_hid_usage_page_keyboard_or_keypad, key_code pairs
+// make_key_code
 //
 
 #define PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(name) \
@@ -373,13 +380,42 @@ constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, key_code> usage
     PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(keyboard_right_gui),
 };
 
+constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, key_code> usage_page_apple_vendor_keyboard_key_code_pairs[] = {
+    PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(apple_vendor_keyboard_dashboard),
+    PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(apple_vendor_keyboard_function),
+    PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(apple_vendor_keyboard_launchpad),
+    PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(apple_vendor_keyboard_expose_all),
+};
+
+constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, key_code> usage_page_apple_vendor_top_case_key_code_pairs[] = {
+    PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(apple_vendor_top_case_keyboard_fn),
+};
+
 #undef PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR
 
 constexpr auto usage_page_keyboard_or_keypad_key_code_map = frozen::make_unordered_map(usage_page_keyboard_or_keypad_key_code_pairs);
+constexpr auto usage_page_apple_vendor_keyboard_key_code_map = frozen::make_unordered_map(usage_page_apple_vendor_keyboard_key_code_pairs);
+constexpr auto usage_page_apple_vendor_top_case_key_code_map = frozen::make_unordered_map(usage_page_apple_vendor_top_case_key_code_pairs);
 
 inline std::optional<key_code> make_key_code(iokit_hid_usage_page usage_page, iokit_hid_usage usage) {
   if (usage_page == iokit_hid_usage_page_keyboard_or_keypad) {
-    if (auto it = usage_page_keyboard_or_keypad_key_code_map.find(type_safe::get(usage))) {
+    auto& map = usage_page_keyboard_or_keypad_key_code_map;
+    auto it = map.find(type_safe::get(usage));
+    if (it != std::end(map)) {
+      return it->second;
+    }
+
+  } else if (usage_page == iokit_hid_usage_page_apple_vendor_keyboard) {
+    auto& map = usage_page_apple_vendor_keyboard_key_code_map;
+    auto it = map.find(type_safe::get(usage));
+    if (it != std::end(map)) {
+      return it->second;
+    }
+
+  } else if (usage_page == iokit_hid_usage_page_apple_vendor_top_case) {
+    auto& map = usage_page_apple_vendor_top_case_key_code_map;
+    auto it = map.find(type_safe::get(usage));
+    if (it != std::end(map)) {
       return it->second;
     }
   }
