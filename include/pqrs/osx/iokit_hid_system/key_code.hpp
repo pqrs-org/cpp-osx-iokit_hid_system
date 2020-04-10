@@ -192,8 +192,7 @@ constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, key_code> usage
 };
 constexpr auto usage_page_keyboard_or_keypad_key_code_map = frozen::make_unordered_map(usage_page_keyboard_or_keypad_key_code_pairs);
 
-// hid usage -> IOHIDSystem key code
-inline std::optional<key_code> make_hid_system_key(iokit_hid_usage_page usage_page, iokit_hid_usage usage) {
+inline std::optional<key_code> make_key_code(iokit_hid_usage_page usage_page, iokit_hid_usage usage) {
   if (usage_page == iokit_hid_usage_page_keyboard_or_keypad) {
     if (auto it = usage_page_keyboard_or_keypad_key_code_map.find(type_safe::get(usage))) {
       return it->second;
