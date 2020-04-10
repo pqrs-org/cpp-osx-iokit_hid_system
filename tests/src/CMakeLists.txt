@@ -14,6 +14,7 @@ project (test)
 add_executable(
   test
   dummy.cpp
+  key_code_test.cpp
   test.cpp
 )
 
