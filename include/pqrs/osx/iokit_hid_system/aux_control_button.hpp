@@ -53,15 +53,62 @@ constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, aux_control_but
     {type_safe::get(iokit_hid_usage_keyboard_volume_down), aux_control_button_sound_down},
 };
 
+constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, aux_control_button> usage_page_consumer_aux_control_button_pairs[] = {
+    // iokit_hid_usage_consumer_consumer_control
+    {type_safe::get(iokit_hid_usage_consumer_power), aux_control_button_power},
+    {type_safe::get(iokit_hid_usage_consumer_display_brightness_increment), aux_control_button_brightness_up},
+    {type_safe::get(iokit_hid_usage_consumer_display_brightness_decrement), aux_control_button_brightness_down},
+    {type_safe::get(iokit_hid_usage_consumer_fast_forward), aux_control_button_fast},
+    {type_safe::get(iokit_hid_usage_consumer_rewind), aux_control_button_rewind},
+    {type_safe::get(iokit_hid_usage_consumer_scan_next_track), aux_control_button_next},
+    {type_safe::get(iokit_hid_usage_consumer_scan_previous_track), aux_control_button_previous},
+    {type_safe::get(iokit_hid_usage_consumer_eject), aux_control_button_eject},
+    {type_safe::get(iokit_hid_usage_consumer_play_or_pause), aux_control_button_play},
+    {type_safe::get(iokit_hid_usage_consumer_mute), aux_control_button_mute},
+    {type_safe::get(iokit_hid_usage_consumer_volume_increment), aux_control_button_sound_up},
+    {type_safe::get(iokit_hid_usage_consumer_volume_decrement), aux_control_button_sound_down},
+    // iokit_hid_usage_consumer_ac_pan
+};
+
+constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, aux_control_button> usage_page_apple_vendor_keyboard_aux_control_button_pairs[] = {
+    {type_safe::get(iokit_hid_usage_apple_vendor_keyboard_brightness_up), aux_control_button_brightness_up},
+    {type_safe::get(iokit_hid_usage_apple_vendor_keyboard_brightness_down), aux_control_button_brightness_down},
+};
+
+constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, aux_control_button> usage_page_apple_vendor_top_case_aux_control_button_pairs[] = {
+    {type_safe::get(iokit_hid_usage_apple_vendor_top_case_brightness_up), aux_control_button_brightness_up},
+    {type_safe::get(iokit_hid_usage_apple_vendor_top_case_brightness_down), aux_control_button_brightness_down},
+    {type_safe::get(iokit_hid_usage_apple_vendor_top_case_video_mirror), aux_control_button_vidmirror},
+    {type_safe::get(iokit_hid_usage_apple_vendor_top_case_illumination_toggle), aux_control_button_illumination_toggle},
+    {type_safe::get(iokit_hid_usage_apple_vendor_top_case_illumination_up), aux_control_button_illumination_up},
+    {type_safe::get(iokit_hid_usage_apple_vendor_top_case_illumination_down), aux_control_button_illumination_down},
+};
+
 constexpr auto usage_page_keyboard_or_keypad_aux_control_button_map = frozen::make_unordered_map(usage_page_keyboard_or_keypad_aux_control_button_pairs);
+constexpr auto usage_page_consumer_aux_control_button_map = frozen::make_unordered_map(usage_page_consumer_aux_control_button_pairs);
+constexpr auto usage_page_apple_vendor_keyboard_aux_control_button_map = frozen::make_unordered_map(usage_page_apple_vendor_keyboard_aux_control_button_pairs);
+constexpr auto usage_page_apple_vendor_top_case_aux_control_button_map = frozen::make_unordered_map(usage_page_apple_vendor_top_case_aux_control_button_pairs);
+
+namespace impl {
+template <typename T>
+inline std::optional<aux_control_button> find_aux_control_button(T& map, iokit_hid_usage usage) {
+  auto it = map.find(type_safe::get(usage));
+  if (it != std::end(map)) {
+    return it->second;
+  }
+  return std::nullopt;
+}
+} // namespace impl
 
 inline std::optional<aux_control_button> make_aux_control_button(iokit_hid_usage_page usage_page, iokit_hid_usage usage) {
   if (usage_page == iokit_hid_usage_page_keyboard_or_keypad) {
-    auto& map = usage_page_keyboard_or_keypad_aux_control_button_map;
-    auto it = map.find(type_safe::get(usage));
-    if (it != std::end(map)) {
-      return it->second;
-    }
+    return impl::find_aux_control_button(usage_page_keyboard_or_keypad_aux_control_button_map, usage);
+  } else if (usage_page == iokit_hid_usage_page_consumer) {
+    return impl::find_aux_control_button(usage_page_consumer_aux_control_button_map, usage);
+  } else if (usage_page == iokit_hid_usage_page_apple_vendor_keyboard) {
+    return impl::find_aux_control_button(usage_page_apple_vendor_keyboard_aux_control_button_map, usage);
+  } else if (usage_page == iokit_hid_usage_page_apple_vendor_top_case) {
+    return impl::find_aux_control_button(usage_page_apple_vendor_top_case_aux_control_button_map, usage);
   }
 
   return std::nullopt;
