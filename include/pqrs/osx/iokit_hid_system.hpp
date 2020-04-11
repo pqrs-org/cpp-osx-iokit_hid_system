@@ -7,5 +7,6 @@
 // (See http://www.boost.org/LICENSE_1_0.txt)
 
 #include "iokit_hid_system/aux_control_button.hpp"
-#include "iokit_hid_system/key_code.hpp"
 #include "iokit_hid_system/client.hpp"
+#include "iokit_hid_system/event_type.hpp"
+#include "iokit_hid_system/key_code.hpp"
