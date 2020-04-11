@@ -10,6 +10,7 @@ IOKit type definitions.
 cpp-osx-iokit_hid_system depends the following classes.
 
 - [frozen](https://github.com/serge-sans-paille/frozen)
+- [pqrs::osx::iokit_return](https://github.com/pqrs-org/cpp-osx-iokit_return)
 - [pqrs::osx::iokit_service_monitor](https://github.com/pqrs-org/cpp-osx-iokit_service_monitor)
 
 ## Install
