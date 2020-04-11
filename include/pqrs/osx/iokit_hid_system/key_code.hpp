@@ -120,7 +120,7 @@ constexpr key_code key_code_keypad_0(0x52);
 constexpr key_code key_code_keypad_period(0x41);
 constexpr key_code key_code_keyboard_non_us_backslash(0xa);
 constexpr key_code key_code_keyboard_application(0x6e);
-// iokit_hid_usage_keyboard_power => get_hid_aux_control_button_map
+// iokit_hid_usage_keyboard_power => aux_control_button
 constexpr key_code key_code_keypad_equal_sign(0x51);
 constexpr key_code key_code_keyboard_f13(0x69);
 constexpr key_code key_code_keyboard_f14(0x6b);
@@ -145,9 +145,9 @@ constexpr key_code key_code_keyboard_help(0x72);
 // iokit_hid_usage_keyboard_copy
 // iokit_hid_usage_keyboard_paste
 // iokit_hid_usage_keyboard_find
-// iokit_hid_usage_keyboard_mute => get_hid_aux_control_button_map
-// iokit_hid_usage_keyboard_volume_up => get_hid_aux_control_button_map
-// iokit_hid_usage_keyboard_volume_down => get_hid_aux_control_button_map
+// iokit_hid_usage_keyboard_mute => aux_control_button
+// iokit_hid_usage_keyboard_volume_up => aux_control_button
+// iokit_hid_usage_keyboard_volume_down => aux_control_button
 // iokit_hid_usage_keyboard_locking_caps_lock
 // iokit_hid_usage_keyboard_locking_num_lock
 // iokit_hid_usage_keyboard_locking_scroll_lock
