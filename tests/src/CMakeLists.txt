@@ -13,7 +13,7 @@ project (test)
 
 add_executable(
   test
-  dummy.cpp
+  aux_control_button_test.cpp
   key_code_test.cpp
   test.cpp
 )
