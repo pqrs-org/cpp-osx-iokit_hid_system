@@ -7,7 +7,6 @@
 #include <frozen/unordered_map.h>
 #include <optional>
 #include <pqrs/osx/iokit_types.hpp>
-#include <unordered_map>
 
 namespace pqrs {
 namespace osx {
