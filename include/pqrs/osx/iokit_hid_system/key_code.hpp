@@ -396,27 +396,24 @@ constexpr auto usage_page_keyboard_or_keypad_key_code_map = frozen::make_unorder
 constexpr auto usage_page_apple_vendor_keyboard_key_code_map = frozen::make_unordered_map(usage_page_apple_vendor_keyboard_key_code_pairs);
 constexpr auto usage_page_apple_vendor_top_case_key_code_map = frozen::make_unordered_map(usage_page_apple_vendor_top_case_key_code_pairs);
 
+namespace impl {
+template <typename T>
+inline std::optional<key_code> find_key_code(T& map, iokit_hid_usage usage) {
+  auto it = map.find(type_safe::get(usage));
+  if (it != std::end(map)) {
+    return it->second;
+  }
+  return std::nullopt;
+}
+} // namespace impl
+
 inline std::optional<key_code> make_key_code(iokit_hid_usage_page usage_page, iokit_hid_usage usage) {
   if (usage_page == iokit_hid_usage_page_keyboard_or_keypad) {
-    auto& map = usage_page_keyboard_or_keypad_key_code_map;
-    auto it = map.find(type_safe::get(usage));
-    if (it != std::end(map)) {
-      return it->second;
-    }
-
+    return impl::find_key_code(usage_page_keyboard_or_keypad_key_code_map, usage);
   } else if (usage_page == iokit_hid_usage_page_apple_vendor_keyboard) {
-    auto& map = usage_page_apple_vendor_keyboard_key_code_map;
-    auto it = map.find(type_safe::get(usage));
-    if (it != std::end(map)) {
-      return it->second;
-    }
-
+    return impl::find_key_code(usage_page_apple_vendor_keyboard_key_code_map, usage);
   } else if (usage_page == iokit_hid_usage_page_apple_vendor_top_case) {
-    auto& map = usage_page_apple_vendor_top_case_key_code_map;
-    auto it = map.find(type_safe::get(usage));
-    if (it != std::end(map)) {
-      return it->second;
-    }
+    return impl::find_key_code(usage_page_apple_vendor_top_case_key_code_map, usage);
   }
 
   return std::nullopt;
