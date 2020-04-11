@@ -8,3 +8,4 @@
 
 #include "iokit_hid_system/aux_control_button.hpp"
 #include "iokit_hid_system/key_code.hpp"
+#include "iokit_hid_system/client.hpp"
