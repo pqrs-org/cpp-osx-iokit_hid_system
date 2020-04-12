@@ -11,130 +11,132 @@
 namespace pqrs {
 namespace osx {
 namespace iokit_hid_system {
-struct key_code : type_safe::strong_typedef<key_code, int32_t>,
-                  type_safe::strong_typedef_op::equality_comparison<key_code>,
-                  type_safe::strong_typedef_op::relational_comparison<key_code> {
+namespace key_code {
+// NXEventData.key.keyCode is uint16_t.
+struct value_t : type_safe::strong_typedef<value_t, uint16_t>,
+                 type_safe::strong_typedef_op::equality_comparison<value_t>,
+                 type_safe::strong_typedef_op::relational_comparison<value_t> {
   using strong_typedef::strong_typedef;
 };
 
 //
-// key_code
+// values
 //
 
-constexpr key_code key_code_keyboard_a(0x0);
-constexpr key_code key_code_keyboard_b(0xb);
-constexpr key_code key_code_keyboard_c(0x8);
-constexpr key_code key_code_keyboard_d(0x2);
-constexpr key_code key_code_keyboard_e(0xe);
-constexpr key_code key_code_keyboard_f(0x3);
-constexpr key_code key_code_keyboard_g(0x5);
-constexpr key_code key_code_keyboard_h(0x4);
-constexpr key_code key_code_keyboard_i(0x22);
-constexpr key_code key_code_keyboard_j(0x26);
-constexpr key_code key_code_keyboard_k(0x28);
-constexpr key_code key_code_keyboard_l(0x25);
-constexpr key_code key_code_keyboard_m(0x2e);
-constexpr key_code key_code_keyboard_n(0x2d);
-constexpr key_code key_code_keyboard_o(0x1f);
-constexpr key_code key_code_keyboard_p(0x23);
-constexpr key_code key_code_keyboard_q(0xc);
-constexpr key_code key_code_keyboard_r(0xf);
-constexpr key_code key_code_keyboard_s(0x1);
-constexpr key_code key_code_keyboard_t(0x11);
-constexpr key_code key_code_keyboard_u(0x20);
-constexpr key_code key_code_keyboard_v(0x9);
-constexpr key_code key_code_keyboard_w(0xd);
-constexpr key_code key_code_keyboard_x(0x7);
-constexpr key_code key_code_keyboard_y(0x10);
-constexpr key_code key_code_keyboard_z(0x6);
-constexpr key_code key_code_keyboard_1(0x12);
-constexpr key_code key_code_keyboard_2(0x13);
-constexpr key_code key_code_keyboard_3(0x14);
-constexpr key_code key_code_keyboard_4(0x15);
-constexpr key_code key_code_keyboard_5(0x17);
-constexpr key_code key_code_keyboard_6(0x16);
-constexpr key_code key_code_keyboard_7(0x1a);
-constexpr key_code key_code_keyboard_8(0x1c);
-constexpr key_code key_code_keyboard_9(0x19);
-constexpr key_code key_code_keyboard_0(0x1d);
-constexpr key_code key_code_keyboard_return_or_enter(0x24);
-constexpr key_code key_code_keyboard_escape(0x35);
-constexpr key_code key_code_keyboard_delete_or_backspace(0x33);
-constexpr key_code key_code_keyboard_tab(0x30);
-constexpr key_code key_code_keyboard_spacebar(0x31);
-constexpr key_code key_code_keyboard_hyphen(0x1b);
-constexpr key_code key_code_keyboard_equal_sign(0x18);
-constexpr key_code key_code_keyboard_open_bracket(0x21);
-constexpr key_code key_code_keyboard_close_bracket(0x1e);
-constexpr key_code key_code_keyboard_backslash(0x2a);
-constexpr key_code key_code_keyboard_non_us_pound(0x2a); // non_us_pound == backslash
-constexpr key_code key_code_keyboard_semicolon(0x29);
-constexpr key_code key_code_keyboard_quote(0x27);
-constexpr key_code key_code_keyboard_grave_accent_and_tilde(0x32);
-constexpr key_code key_code_keyboard_comma(0x2b);
-constexpr key_code key_code_keyboard_period(0x2f);
-constexpr key_code key_code_keyboard_slash(0x2c);
-constexpr key_code key_code_keyboard_caps_lock(0x39);
-constexpr key_code key_code_keyboard_f1(0x7a);
-constexpr key_code key_code_keyboard_f2(0x78);
-constexpr key_code key_code_keyboard_f3(0x63);
-constexpr key_code key_code_keyboard_f4(0x76);
-constexpr key_code key_code_keyboard_f5(0x60);
-constexpr key_code key_code_keyboard_f6(0x61);
-constexpr key_code key_code_keyboard_f7(0x62);
-constexpr key_code key_code_keyboard_f8(0x64);
-constexpr key_code key_code_keyboard_f9(0x65);
-constexpr key_code key_code_keyboard_f10(0x6d);
-constexpr key_code key_code_keyboard_f11(0x67);
-constexpr key_code key_code_keyboard_f12(0x6f);
-constexpr key_code key_code_keyboard_print_screen(0x69);
-constexpr key_code key_code_keyboard_scroll_lock(0x6b);
-constexpr key_code key_code_keyboard_pause(0x71);
-constexpr key_code key_code_keyboard_insert(0x72);
-constexpr key_code key_code_keyboard_home(0x73);
-constexpr key_code key_code_keyboard_page_up(0x74);
-constexpr key_code key_code_keyboard_delete_forward(0x75);
-constexpr key_code key_code_keyboard_end(0x77);
-constexpr key_code key_code_keyboard_page_down(0x79);
-constexpr key_code key_code_keyboard_right_arrow(0x7c);
-constexpr key_code key_code_keyboard_left_arrow(0x7b);
-constexpr key_code key_code_keyboard_down_arrow(0x7d);
-constexpr key_code key_code_keyboard_up_arrow(0x7e);
-constexpr key_code key_code_keypad_num_lock(0x47);
-constexpr key_code key_code_keypad_slash(0x4b);
-constexpr key_code key_code_keypad_asterisk(0x43);
-constexpr key_code key_code_keypad_hyphen(0x4e);
-constexpr key_code key_code_keypad_plus(0x45);
-constexpr key_code key_code_keypad_enter(0x4c);
-constexpr key_code key_code_keypad_1(0x53);
-constexpr key_code key_code_keypad_2(0x54);
-constexpr key_code key_code_keypad_3(0x55);
-constexpr key_code key_code_keypad_4(0x56);
-constexpr key_code key_code_keypad_5(0x57);
-constexpr key_code key_code_keypad_6(0x58);
-constexpr key_code key_code_keypad_7(0x59);
-constexpr key_code key_code_keypad_8(0x5b);
-constexpr key_code key_code_keypad_9(0x5c);
-constexpr key_code key_code_keypad_0(0x52);
-constexpr key_code key_code_keypad_period(0x41);
-constexpr key_code key_code_keyboard_non_us_backslash(0xa);
-constexpr key_code key_code_keyboard_application(0x6e);
+constexpr value_t keyboard_a(0x0);
+constexpr value_t keyboard_b(0xb);
+constexpr value_t keyboard_c(0x8);
+constexpr value_t keyboard_d(0x2);
+constexpr value_t keyboard_e(0xe);
+constexpr value_t keyboard_f(0x3);
+constexpr value_t keyboard_g(0x5);
+constexpr value_t keyboard_h(0x4);
+constexpr value_t keyboard_i(0x22);
+constexpr value_t keyboard_j(0x26);
+constexpr value_t keyboard_k(0x28);
+constexpr value_t keyboard_l(0x25);
+constexpr value_t keyboard_m(0x2e);
+constexpr value_t keyboard_n(0x2d);
+constexpr value_t keyboard_o(0x1f);
+constexpr value_t keyboard_p(0x23);
+constexpr value_t keyboard_q(0xc);
+constexpr value_t keyboard_r(0xf);
+constexpr value_t keyboard_s(0x1);
+constexpr value_t keyboard_t(0x11);
+constexpr value_t keyboard_u(0x20);
+constexpr value_t keyboard_v(0x9);
+constexpr value_t keyboard_w(0xd);
+constexpr value_t keyboard_x(0x7);
+constexpr value_t keyboard_y(0x10);
+constexpr value_t keyboard_z(0x6);
+constexpr value_t keyboard_1(0x12);
+constexpr value_t keyboard_2(0x13);
+constexpr value_t keyboard_3(0x14);
+constexpr value_t keyboard_4(0x15);
+constexpr value_t keyboard_5(0x17);
+constexpr value_t keyboard_6(0x16);
+constexpr value_t keyboard_7(0x1a);
+constexpr value_t keyboard_8(0x1c);
+constexpr value_t keyboard_9(0x19);
+constexpr value_t keyboard_0(0x1d);
+constexpr value_t keyboard_return_or_enter(0x24);
+constexpr value_t keyboard_escape(0x35);
+constexpr value_t keyboard_delete_or_backspace(0x33);
+constexpr value_t keyboard_tab(0x30);
+constexpr value_t keyboard_spacebar(0x31);
+constexpr value_t keyboard_hyphen(0x1b);
+constexpr value_t keyboard_equal_sign(0x18);
+constexpr value_t keyboard_open_bracket(0x21);
+constexpr value_t keyboard_close_bracket(0x1e);
+constexpr value_t keyboard_backslash(0x2a);
+constexpr value_t keyboard_non_us_pound(0x2a); // non_us_pound == backslash
+constexpr value_t keyboard_semicolon(0x29);
+constexpr value_t keyboard_quote(0x27);
+constexpr value_t keyboard_grave_accent_and_tilde(0x32);
+constexpr value_t keyboard_comma(0x2b);
+constexpr value_t keyboard_period(0x2f);
+constexpr value_t keyboard_slash(0x2c);
+constexpr value_t keyboard_caps_lock(0x39);
+constexpr value_t keyboard_f1(0x7a);
+constexpr value_t keyboard_f2(0x78);
+constexpr value_t keyboard_f3(0x63);
+constexpr value_t keyboard_f4(0x76);
+constexpr value_t keyboard_f5(0x60);
+constexpr value_t keyboard_f6(0x61);
+constexpr value_t keyboard_f7(0x62);
+constexpr value_t keyboard_f8(0x64);
+constexpr value_t keyboard_f9(0x65);
+constexpr value_t keyboard_f10(0x6d);
+constexpr value_t keyboard_f11(0x67);
+constexpr value_t keyboard_f12(0x6f);
+constexpr value_t keyboard_print_screen(0x69);
+constexpr value_t keyboard_scroll_lock(0x6b);
+constexpr value_t keyboard_pause(0x71);
+constexpr value_t keyboard_insert(0x72);
+constexpr value_t keyboard_home(0x73);
+constexpr value_t keyboard_page_up(0x74);
+constexpr value_t keyboard_delete_forward(0x75);
+constexpr value_t keyboard_end(0x77);
+constexpr value_t keyboard_page_down(0x79);
+constexpr value_t keyboard_right_arrow(0x7c);
+constexpr value_t keyboard_left_arrow(0x7b);
+constexpr value_t keyboard_down_arrow(0x7d);
+constexpr value_t keyboard_up_arrow(0x7e);
+constexpr value_t keypad_num_lock(0x47);
+constexpr value_t keypad_slash(0x4b);
+constexpr value_t keypad_asterisk(0x43);
+constexpr value_t keypad_hyphen(0x4e);
+constexpr value_t keypad_plus(0x45);
+constexpr value_t keypad_enter(0x4c);
+constexpr value_t keypad_1(0x53);
+constexpr value_t keypad_2(0x54);
+constexpr value_t keypad_3(0x55);
+constexpr value_t keypad_4(0x56);
+constexpr value_t keypad_5(0x57);
+constexpr value_t keypad_6(0x58);
+constexpr value_t keypad_7(0x59);
+constexpr value_t keypad_8(0x5b);
+constexpr value_t keypad_9(0x5c);
+constexpr value_t keypad_0(0x52);
+constexpr value_t keypad_period(0x41);
+constexpr value_t keyboard_non_us_backslash(0xa);
+constexpr value_t keyboard_application(0x6e);
 // iokit_hid_usage_keyboard_power => aux_control_button
-constexpr key_code key_code_keypad_equal_sign(0x51);
-constexpr key_code key_code_keyboard_f13(0x69);
-constexpr key_code key_code_keyboard_f14(0x6b);
-constexpr key_code key_code_keyboard_f15(0x71);
-constexpr key_code key_code_keyboard_f16(0x6a);
-constexpr key_code key_code_keyboard_f17(0x40);
-constexpr key_code key_code_keyboard_f18(0x4f);
-constexpr key_code key_code_keyboard_f19(0x50);
-constexpr key_code key_code_keyboard_f20(0x5a);
+constexpr value_t keypad_equal_sign(0x51);
+constexpr value_t keyboard_f13(0x69);
+constexpr value_t keyboard_f14(0x6b);
+constexpr value_t keyboard_f15(0x71);
+constexpr value_t keyboard_f16(0x6a);
+constexpr value_t keyboard_f17(0x40);
+constexpr value_t keyboard_f18(0x4f);
+constexpr value_t keyboard_f19(0x50);
+constexpr value_t keyboard_f20(0x5a);
 // iokit_hid_usage_keyboard_f21
 // iokit_hid_usage_keyboard_f22
 // iokit_hid_usage_keyboard_f23
 // iokit_hid_usage_keyboard_f24
 // iokit_hid_usage_keyboard_execute
-constexpr key_code key_code_keyboard_help(0x72);
+constexpr value_t keyboard_help(0x72);
 // iokit_hid_usage_keyboard_menu
 // iokit_hid_usage_keyboard_select
 // iokit_hid_usage_keyboard_stop
@@ -150,19 +152,19 @@ constexpr key_code key_code_keyboard_help(0x72);
 // iokit_hid_usage_keyboard_locking_caps_lock
 // iokit_hid_usage_keyboard_locking_num_lock
 // iokit_hid_usage_keyboard_locking_scroll_lock
-constexpr key_code key_code_keypad_comma(0x5f);
+constexpr value_t keypad_comma(0x5f);
 // iokit_hid_usage_keypad_equal_sign_as400
-constexpr key_code key_code_keyboard_international1(0x5e);
+constexpr value_t keyboard_international1(0x5e);
 // iokit_hid_usage_keyboard_international2
-constexpr key_code key_code_keyboard_international3(0x5d);
+constexpr value_t keyboard_international3(0x5d);
 // iokit_hid_usage_keyboard_international4
 // iokit_hid_usage_keyboard_international5
 // iokit_hid_usage_keyboard_international6
 // iokit_hid_usage_keyboard_international7
 // iokit_hid_usage_keyboard_international8
 // iokit_hid_usage_keyboard_international9
-constexpr key_code key_code_keyboard_lang1(0x68);
-constexpr key_code key_code_keyboard_lang2(0x66);
+constexpr value_t keyboard_lang1(0x68);
+constexpr value_t keyboard_lang2(0x66);
 // iokit_hid_usage_keyboard_lang3
 // iokit_hid_usage_keyboard_lang4
 // iokit_hid_usage_keyboard_lang5
@@ -183,30 +185,31 @@ constexpr key_code key_code_keyboard_lang2(0x66);
 // iokit_hid_usage_keyboard_cr_sel_or_props
 // iokit_hid_usage_keyboard_ex_sel
 
-constexpr key_code key_code_keyboard_left_control(0x3b);
-constexpr key_code key_code_keyboard_left_shift(0x38);
-constexpr key_code key_code_keyboard_left_alt(0x3a);
-constexpr key_code key_code_keyboard_left_gui(0x37);
-constexpr key_code key_code_keyboard_right_control(0x3e);
-constexpr key_code key_code_keyboard_right_shift(0x3c);
-constexpr key_code key_code_keyboard_right_alt(0x3d);
-constexpr key_code key_code_keyboard_right_gui(0x36);
+constexpr value_t keyboard_left_control(0x3b);
+constexpr value_t keyboard_left_shift(0x38);
+constexpr value_t keyboard_left_alt(0x3a);
+constexpr value_t keyboard_left_gui(0x37);
+constexpr value_t keyboard_right_control(0x3e);
+constexpr value_t keyboard_right_shift(0x3c);
+constexpr value_t keyboard_right_alt(0x3d);
+constexpr value_t keyboard_right_gui(0x36);
 
-constexpr key_code key_code_apple_vendor_keyboard_dashboard(0x82);
-constexpr key_code key_code_apple_vendor_keyboard_function(0x3f);
-constexpr key_code key_code_apple_vendor_keyboard_launchpad(0x83);
-constexpr key_code key_code_apple_vendor_keyboard_expose_all(0xa0);
+constexpr value_t apple_vendor_keyboard_dashboard(0x82);
+constexpr value_t apple_vendor_keyboard_function(0x3f);
+constexpr value_t apple_vendor_keyboard_launchpad(0x83);
+constexpr value_t apple_vendor_keyboard_expose_all(0xa0);
 
-constexpr key_code key_code_apple_vendor_top_case_keyboard_fn(0x3f); // apple_vendor_top_case_keyboard_fn == apple_vendor_keyboard_function
+constexpr value_t apple_vendor_top_case_keyboard_fn(0x3f); // apple_vendor_top_case_keyboard_fn == apple_vendor_keyboard_function
 
 //
 // make_key_code
 //
 
+namespace impl {
 #define PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(name) \
-  { type_safe::get(iokit_hid_usage_##name), key_code_##name }
+  { type_safe::get(iokit_hid_usage_##name), name }
 
-constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, key_code> usage_page_keyboard_or_keypad_key_code_pairs[] = {
+constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, value_t> usage_page_keyboard_or_keypad_pairs[] = {
     PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(keyboard_a),
     PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(keyboard_b),
     PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(keyboard_c),
@@ -379,26 +382,25 @@ constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, key_code> usage
     PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(keyboard_right_gui),
 };
 
-constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, key_code> usage_page_apple_vendor_keyboard_key_code_pairs[] = {
+constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, value_t> usage_page_apple_vendor_keyboard_pairs[] = {
     PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(apple_vendor_keyboard_dashboard),
     PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(apple_vendor_keyboard_function),
     PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(apple_vendor_keyboard_launchpad),
     PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(apple_vendor_keyboard_expose_all),
 };
 
-constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, key_code> usage_page_apple_vendor_top_case_key_code_pairs[] = {
+constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, value_t> usage_page_apple_vendor_top_case_pairs[] = {
     PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(apple_vendor_top_case_keyboard_fn),
 };
 
 #undef PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR
 
-constexpr auto usage_page_keyboard_or_keypad_key_code_map = frozen::make_unordered_map(usage_page_keyboard_or_keypad_key_code_pairs);
-constexpr auto usage_page_apple_vendor_keyboard_key_code_map = frozen::make_unordered_map(usage_page_apple_vendor_keyboard_key_code_pairs);
-constexpr auto usage_page_apple_vendor_top_case_key_code_map = frozen::make_unordered_map(usage_page_apple_vendor_top_case_key_code_pairs);
+constexpr auto usage_page_keyboard_or_keypad_map = frozen::make_unordered_map(usage_page_keyboard_or_keypad_pairs);
+constexpr auto usage_page_apple_vendor_keyboard_map = frozen::make_unordered_map(usage_page_apple_vendor_keyboard_pairs);
+constexpr auto usage_page_apple_vendor_top_case_map = frozen::make_unordered_map(usage_page_apple_vendor_top_case_pairs);
 
-namespace impl {
 template <typename T>
-inline std::optional<key_code> find_key_code(T& map, iokit_hid_usage usage) {
+inline std::optional<key_code::value_t> find(T& map, iokit_hid_usage usage) {
   auto it = map.find(type_safe::get(usage));
   if (it != std::end(map)) {
     return it->second;
@@ -406,14 +408,15 @@ inline std::optional<key_code> find_key_code(T& map, iokit_hid_usage usage) {
   return std::nullopt;
 }
 } // namespace impl
+} // namespace key_code
 
-inline std::optional<key_code> make_key_code(iokit_hid_usage_page usage_page, iokit_hid_usage usage) {
+inline std::optional<key_code::value_t> make_key_code(iokit_hid_usage_page usage_page, iokit_hid_usage usage) {
   if (usage_page == iokit_hid_usage_page_keyboard_or_keypad) {
-    return impl::find_key_code(usage_page_keyboard_or_keypad_key_code_map, usage);
+    return key_code::impl::find(key_code::impl::usage_page_keyboard_or_keypad_map, usage);
   } else if (usage_page == iokit_hid_usage_page_apple_vendor_keyboard) {
-    return impl::find_key_code(usage_page_apple_vendor_keyboard_key_code_map, usage);
+    return key_code::impl::find(key_code::impl::usage_page_apple_vendor_keyboard_map, usage);
   } else if (usage_page == iokit_hid_usage_page_apple_vendor_top_case) {
-    return impl::find_key_code(usage_page_apple_vendor_top_case_key_code_map, usage);
+    return key_code::impl::find(key_code::impl::usage_page_apple_vendor_top_case_map, usage);
   }
 
   return std::nullopt;
@@ -424,6 +427,6 @@ inline std::optional<key_code> make_key_code(iokit_hid_usage_page usage_page, io
 
 namespace std {
 template <>
-struct hash<pqrs::osx::iokit_hid_system::key_code> : type_safe::hashable<pqrs::osx::iokit_hid_system::key_code> {
+struct hash<pqrs::osx::iokit_hid_system::key_code::value_t> : type_safe::hashable<pqrs::osx::iokit_hid_system::key_code::value_t> {
 };
 } // namespace std

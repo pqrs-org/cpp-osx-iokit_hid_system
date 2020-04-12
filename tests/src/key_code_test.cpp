@@ -20,12 +20,12 @@ TEST_CASE("make_key_code") {
   {
     auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_keyboard_or_keypad,
                                                              pqrs::osx::iokit_hid_usage_keyboard_a);
-    REQUIRE(actual == pqrs::osx::iokit_hid_system::key_code_keyboard_a);
+    REQUIRE(actual == pqrs::osx::iokit_hid_system::key_code::keyboard_a);
   }
   {
     auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_keyboard_or_keypad,
                                                              pqrs::osx::iokit_hid_usage_keyboard_b);
-    REQUIRE(actual == pqrs::osx::iokit_hid_system::key_code_keyboard_b);
+    REQUIRE(actual == pqrs::osx::iokit_hid_system::key_code::keyboard_b);
   }
   {
     auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_keyboard_or_keypad,
@@ -40,12 +40,12 @@ TEST_CASE("make_key_code") {
   {
     auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_apple_vendor_keyboard,
                                                              pqrs::osx::iokit_hid_usage_apple_vendor_keyboard_dashboard);
-    REQUIRE(actual == pqrs::osx::iokit_hid_system::key_code_apple_vendor_keyboard_dashboard);
+    REQUIRE(actual == pqrs::osx::iokit_hid_system::key_code::apple_vendor_keyboard_dashboard);
   }
   {
     auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_apple_vendor_keyboard,
                                                              pqrs::osx::iokit_hid_usage_apple_vendor_keyboard_function);
-    REQUIRE(actual == pqrs::osx::iokit_hid_system::key_code_apple_vendor_keyboard_function);
+    REQUIRE(actual == pqrs::osx::iokit_hid_system::key_code::apple_vendor_keyboard_function);
   }
   {
     auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_apple_vendor_keyboard,
@@ -60,7 +60,7 @@ TEST_CASE("make_key_code") {
   {
     auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_apple_vendor_top_case,
                                                              pqrs::osx::iokit_hid_usage_apple_vendor_top_case_keyboard_fn);
-    REQUIRE(actual == pqrs::osx::iokit_hid_system::key_code_apple_vendor_top_case_keyboard_fn);
+    REQUIRE(actual == pqrs::osx::iokit_hid_system::key_code::apple_vendor_top_case_keyboard_fn);
   }
   {
     auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_apple_vendor_keyboard,
