@@ -29,3 +29,9 @@ constexpr value_t system_defined(NX_SYSDEFINED);
 } // namespace iokit_hid_system
 } // namespace osx
 } // namespace pqrs
+
+namespace std {
+template <>
+struct hash<pqrs::osx::iokit_hid_system::event_type::value_t> : type_safe::hashable<pqrs::osx::iokit_hid_system::event_type::value_t> {
+};
+} // namespace std
