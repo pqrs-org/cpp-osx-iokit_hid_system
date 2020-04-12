@@ -20,7 +20,7 @@ TEST_CASE("make_aux_control_button") {
   {
     auto actual = pqrs::osx::iokit_hid_system::make_aux_control_button(pqrs::osx::iokit_hid_usage_page_keyboard_or_keypad,
                                                                        pqrs::osx::iokit_hid_usage_keyboard_power);
-    REQUIRE(actual == pqrs::osx::iokit_hid_system::aux_control_button_power);
+    REQUIRE(actual == pqrs::osx::iokit_hid_system::aux_control_button::power);
   }
   {
     auto actual = pqrs::osx::iokit_hid_system::make_aux_control_button(pqrs::osx::iokit_hid_usage_page_keyboard_or_keypad,
@@ -35,7 +35,7 @@ TEST_CASE("make_aux_control_button") {
   {
     auto actual = pqrs::osx::iokit_hid_system::make_aux_control_button(pqrs::osx::iokit_hid_usage_page_consumer,
                                                                        pqrs::osx::iokit_hid_usage_consumer_mute);
-    REQUIRE(actual == pqrs::osx::iokit_hid_system::aux_control_button_mute);
+    REQUIRE(actual == pqrs::osx::iokit_hid_system::aux_control_button::mute);
   }
   {
     auto actual = pqrs::osx::iokit_hid_system::make_aux_control_button(pqrs::osx::iokit_hid_usage_page_consumer,
@@ -50,7 +50,7 @@ TEST_CASE("make_aux_control_button") {
   {
     auto actual = pqrs::osx::iokit_hid_system::make_aux_control_button(pqrs::osx::iokit_hid_usage_page_apple_vendor_keyboard,
                                                                        pqrs::osx::iokit_hid_usage_apple_vendor_keyboard_brightness_down);
-    REQUIRE(actual == pqrs::osx::iokit_hid_system::aux_control_button_brightness_down);
+    REQUIRE(actual == pqrs::osx::iokit_hid_system::aux_control_button::brightness_down);
   }
   {
     auto actual = pqrs::osx::iokit_hid_system::make_aux_control_button(pqrs::osx::iokit_hid_usage_page_apple_vendor_keyboard,
@@ -65,7 +65,7 @@ TEST_CASE("make_aux_control_button") {
   {
     auto actual = pqrs::osx::iokit_hid_system::make_aux_control_button(pqrs::osx::iokit_hid_usage_page_apple_vendor_top_case,
                                                                        pqrs::osx::iokit_hid_usage_apple_vendor_top_case_illumination_down);
-    REQUIRE(actual == pqrs::osx::iokit_hid_system::aux_control_button_illumination_down);
+    REQUIRE(actual == pqrs::osx::iokit_hid_system::aux_control_button::illumination_down);
   }
   {
     auto actual = pqrs::osx::iokit_hid_system::make_aux_control_button(pqrs::osx::iokit_hid_usage_page_apple_vendor_keyboard,
