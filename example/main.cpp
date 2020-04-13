@@ -12,7 +12,25 @@ int main(void) {
     global_wait->notify();
   });
 
-  auto client = std::make_unique<pqrs::osx::iokit_hid_system::client>();
+  auto client = std::make_unique<pqrs::osx::iokit_hid_system::client>(pqrs::dispatcher::extra::get_shared_dispatcher());
+
+  client->opened.connect([&client] {
+    std::cout << "iokit_hid_system opened" << std::endl;
+
+    client->async_post_key_code_event(pqrs::osx::iokit_hid_system::event_type::key_down,
+                                      pqrs::osx::iokit_hid_system::key_code::apple_vendor_keyboard_expose_all,
+                                      0,
+                                      false);
+  });
+
+  client->closed.connect([] {
+    std::cout << "iokit_hid_system closed" << std::endl;
+  });
+
+  client->error_occurred.connect([](auto&& message, auto&& r) {
+    std::cout << message << " " << r << std::endl;
+  });
+
   client->caps_lock_state_changed.connect([](auto&& state) {
     if (!state) {
       std::cout << "caps_lock_state_changed: std::nullopt" << std::endl;
@@ -20,6 +38,8 @@ int main(void) {
       std::cout << "caps_lock_state_changed: " << *state << std::endl;
     }
   });
+
+  client->async_start();
   client->async_start_caps_lock_check_timer(std::chrono::milliseconds(100));
 
   std::this_thread::sleep_for(std::chrono::milliseconds(500));
