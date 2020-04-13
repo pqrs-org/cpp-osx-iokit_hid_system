@@ -1,24 +1,45 @@
 #import "AppDelegate.h"
 #include <pqrs/dispatcher.hpp>
 #include <pqrs/osx/iokit_hid_system.hpp>
+#import <pqrs/weakify.h>
+#include <sstream>
 
 @interface AppDelegate ()
 
-@property(weak) IBOutlet NSWindow *window;
+@property(weak) IBOutlet NSWindow* window;
+@property(weak) IBOutlet NSTextView* textView;
 @property std::shared_ptr<pqrs::osx::iokit_hid_system::client> client;
 
 @end
 
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+- (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
+  self.textView.string = @"";
+
   pqrs::dispatcher::extra::initialize_shared_dispatcher();
 
   self.client = std::make_shared<pqrs::osx::iokit_hid_system::client>(
       pqrs::dispatcher::extra::get_shared_dispatcher());
+
+  self.client->opened.connect([self] {
+    [self appendLogMessage:@"opened"];
+  });
+
+  self.client->closed.connect([self] {
+    [self appendLogMessage:@"closed"];
+  });
+
+  self.client->error_occurred.connect([self](auto&& message, auto&& r) {
+    std::stringstream ss;
+    ss << message << " " << r;
+    [self appendLogMessage:[NSString stringWithUTF8String:ss.str().c_str()]];
+  });
+
+  self.client->async_start();
 }
 
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
+- (void)applicationWillTerminate:(NSNotification*)aNotification {
   self.client = nullptr;
 
   pqrs::dispatcher::extra::terminate_shared_dispatcher();
@@ -38,6 +59,18 @@
       pqrs::osx::iokit_hid_system::key_code::apple_vendor_keyboard_launchpad,
       0,
       false);
+}
+
+- (void)appendLogMessage:(NSString*)string {
+  @weakify(self);
+  dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) {
+      return;
+    }
+
+    self.textView.string = [self.textView.string stringByAppendingFormat:@"%@\n", string];
+  });
 }
 
 @end
