@@ -48,42 +48,42 @@ constexpr value_t illumination_toggle(NX_KEYTYPE_ILLUMINATION_TOGGLE);
 //
 
 namespace impl {
-constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, value_t> usage_page_keyboard_or_keypad_pairs[] = {
-    {type_safe::get(iokit_hid_usage_keyboard_power), power},
-    {type_safe::get(iokit_hid_usage_keyboard_mute), mute},
-    {type_safe::get(iokit_hid_usage_keyboard_volume_up), sound_up},
-    {type_safe::get(iokit_hid_usage_keyboard_volume_down), sound_down},
+constexpr std::pair<type_safe::underlying_type<iokit_hid_usage::value_t>, value_t> usage_page_keyboard_or_keypad_pairs[] = {
+    {type_safe::get(iokit_hid_usage::keyboard_or_keypad::keyboard_power), power},
+    {type_safe::get(iokit_hid_usage::keyboard_or_keypad::keyboard_mute), mute},
+    {type_safe::get(iokit_hid_usage::keyboard_or_keypad::keyboard_volume_up), sound_up},
+    {type_safe::get(iokit_hid_usage::keyboard_or_keypad::keyboard_volume_down), sound_down},
 };
 
-constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, value_t> usage_page_consumer_pairs[] = {
+constexpr std::pair<type_safe::underlying_type<iokit_hid_usage::value_t>, value_t> usage_page_consumer_pairs[] = {
     // iokit_hid_usage_consumer_consumer_control
-    {type_safe::get(iokit_hid_usage_consumer_power), power},
-    {type_safe::get(iokit_hid_usage_consumer_display_brightness_increment), brightness_up},
-    {type_safe::get(iokit_hid_usage_consumer_display_brightness_decrement), brightness_down},
-    {type_safe::get(iokit_hid_usage_consumer_fast_forward), fast},
-    {type_safe::get(iokit_hid_usage_consumer_rewind), rewind},
-    {type_safe::get(iokit_hid_usage_consumer_scan_next_track), next},
-    {type_safe::get(iokit_hid_usage_consumer_scan_previous_track), previous},
-    {type_safe::get(iokit_hid_usage_consumer_eject), eject},
-    {type_safe::get(iokit_hid_usage_consumer_play_or_pause), play},
-    {type_safe::get(iokit_hid_usage_consumer_mute), mute},
-    {type_safe::get(iokit_hid_usage_consumer_volume_increment), sound_up},
-    {type_safe::get(iokit_hid_usage_consumer_volume_decrement), sound_down},
+    {type_safe::get(iokit_hid_usage::consumer::power), power},
+    {type_safe::get(iokit_hid_usage::consumer::display_brightness_increment), brightness_up},
+    {type_safe::get(iokit_hid_usage::consumer::display_brightness_decrement), brightness_down},
+    {type_safe::get(iokit_hid_usage::consumer::fast_forward), fast},
+    {type_safe::get(iokit_hid_usage::consumer::rewind), rewind},
+    {type_safe::get(iokit_hid_usage::consumer::scan_next_track), next},
+    {type_safe::get(iokit_hid_usage::consumer::scan_previous_track), previous},
+    {type_safe::get(iokit_hid_usage::consumer::eject), eject},
+    {type_safe::get(iokit_hid_usage::consumer::play_or_pause), play},
+    {type_safe::get(iokit_hid_usage::consumer::mute), mute},
+    {type_safe::get(iokit_hid_usage::consumer::volume_increment), sound_up},
+    {type_safe::get(iokit_hid_usage::consumer::volume_decrement), sound_down},
     // iokit_hid_usage_consumer_ac_pan
 };
 
-constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, value_t> usage_page_apple_vendor_keyboard_pairs[] = {
-    {type_safe::get(iokit_hid_usage_apple_vendor_keyboard_brightness_up), brightness_up},
-    {type_safe::get(iokit_hid_usage_apple_vendor_keyboard_brightness_down), brightness_down},
+constexpr std::pair<type_safe::underlying_type<iokit_hid_usage::value_t>, value_t> usage_page_apple_vendor_keyboard_pairs[] = {
+    {type_safe::get(iokit_hid_usage::apple_vendor_keyboard::brightness_up), brightness_up},
+    {type_safe::get(iokit_hid_usage::apple_vendor_keyboard::brightness_down), brightness_down},
 };
 
-constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, value_t> usage_page_apple_vendor_top_case_pairs[] = {
-    {type_safe::get(iokit_hid_usage_apple_vendor_top_case_brightness_up), brightness_up},
-    {type_safe::get(iokit_hid_usage_apple_vendor_top_case_brightness_down), brightness_down},
-    {type_safe::get(iokit_hid_usage_apple_vendor_top_case_video_mirror), vidmirror},
-    {type_safe::get(iokit_hid_usage_apple_vendor_top_case_illumination_toggle), illumination_toggle},
-    {type_safe::get(iokit_hid_usage_apple_vendor_top_case_illumination_up), illumination_up},
-    {type_safe::get(iokit_hid_usage_apple_vendor_top_case_illumination_down), illumination_down},
+constexpr std::pair<type_safe::underlying_type<iokit_hid_usage::value_t>, value_t> usage_page_apple_vendor_top_case_pairs[] = {
+    {type_safe::get(iokit_hid_usage::apple_vendor_top_case::brightness_up), brightness_up},
+    {type_safe::get(iokit_hid_usage::apple_vendor_top_case::brightness_down), brightness_down},
+    {type_safe::get(iokit_hid_usage::apple_vendor_top_case::video_mirror), vidmirror},
+    {type_safe::get(iokit_hid_usage::apple_vendor_top_case::illumination_toggle), illumination_toggle},
+    {type_safe::get(iokit_hid_usage::apple_vendor_top_case::illumination_up), illumination_up},
+    {type_safe::get(iokit_hid_usage::apple_vendor_top_case::illumination_down), illumination_down},
 };
 
 constexpr auto usage_page_keyboard_or_keypad_map = frozen::make_unordered_map(usage_page_keyboard_or_keypad_pairs);
@@ -92,7 +92,7 @@ constexpr auto usage_page_apple_vendor_keyboard_map = frozen::make_unordered_map
 constexpr auto usage_page_apple_vendor_top_case_map = frozen::make_unordered_map(usage_page_apple_vendor_top_case_pairs);
 
 template <typename T>
-inline std::optional<value_t> find(T& map, iokit_hid_usage usage) {
+inline std::optional<value_t> find(T& map, iokit_hid_usage::value_t usage) {
   auto it = map.find(type_safe::get(usage));
   if (it != std::end(map)) {
     return it->second;
@@ -102,14 +102,14 @@ inline std::optional<value_t> find(T& map, iokit_hid_usage usage) {
 } // namespace impl
 } // namespace aux_control_button
 
-inline std::optional<aux_control_button::value_t> make_aux_control_button(iokit_hid_usage_page usage_page, iokit_hid_usage usage) {
-  if (usage_page == iokit_hid_usage_page_keyboard_or_keypad) {
+inline std::optional<aux_control_button::value_t> make_aux_control_button(iokit_hid_usage_page::value_t usage_page, iokit_hid_usage::value_t usage) {
+  if (usage_page == iokit_hid_usage_page::keyboard_or_keypad) {
     return aux_control_button::impl::find(aux_control_button::impl::usage_page_keyboard_or_keypad_map, usage);
-  } else if (usage_page == iokit_hid_usage_page_consumer) {
+  } else if (usage_page == iokit_hid_usage_page::consumer) {
     return aux_control_button::impl::find(aux_control_button::impl::usage_page_consumer_map, usage);
-  } else if (usage_page == iokit_hid_usage_page_apple_vendor_keyboard) {
+  } else if (usage_page == iokit_hid_usage_page::apple_vendor_keyboard) {
     return aux_control_button::impl::find(aux_control_button::impl::usage_page_apple_vendor_keyboard_map, usage);
-  } else if (usage_page == iokit_hid_usage_page_apple_vendor_top_case) {
+  } else if (usage_page == iokit_hid_usage_page::apple_vendor_top_case) {
     return aux_control_button::impl::find(aux_control_button::impl::usage_page_apple_vendor_top_case_map, usage);
   }
 

@@ -121,7 +121,7 @@ constexpr value_t keypad_0(0x52);
 constexpr value_t keypad_period(0x41);
 constexpr value_t keyboard_non_us_backslash(0xa);
 constexpr value_t keyboard_application(0x6e);
-// iokit_hid_usage_keyboard_power => aux_control_button
+// keyboard_power => aux_control_button
 constexpr value_t keypad_equal_sign(0x51);
 constexpr value_t keyboard_f13(0x69);
 constexpr value_t keyboard_f14(0x6b);
@@ -131,59 +131,59 @@ constexpr value_t keyboard_f17(0x40);
 constexpr value_t keyboard_f18(0x4f);
 constexpr value_t keyboard_f19(0x50);
 constexpr value_t keyboard_f20(0x5a);
-// iokit_hid_usage_keyboard_f21
-// iokit_hid_usage_keyboard_f22
-// iokit_hid_usage_keyboard_f23
-// iokit_hid_usage_keyboard_f24
-// iokit_hid_usage_keyboard_execute
+// keyboard_f21
+// keyboard_f22
+// keyboard_f23
+// keyboard_f24
+// keyboard_execute
 constexpr value_t keyboard_help(0x72);
-// iokit_hid_usage_keyboard_menu
-// iokit_hid_usage_keyboard_select
-// iokit_hid_usage_keyboard_stop
-// iokit_hid_usage_keyboard_again
-// iokit_hid_usage_keyboard_undo
-// iokit_hid_usage_keyboard_cut
-// iokit_hid_usage_keyboard_copy
-// iokit_hid_usage_keyboard_paste
-// iokit_hid_usage_keyboard_find
-// iokit_hid_usage_keyboard_mute => aux_control_button
-// iokit_hid_usage_keyboard_volume_up => aux_control_button
-// iokit_hid_usage_keyboard_volume_down => aux_control_button
-// iokit_hid_usage_keyboard_locking_caps_lock
-// iokit_hid_usage_keyboard_locking_num_lock
-// iokit_hid_usage_keyboard_locking_scroll_lock
+// keyboard_menu
+// keyboard_select
+// keyboard_stop
+// keyboard_again
+// keyboard_undo
+// keyboard_cut
+// keyboard_copy
+// keyboard_paste
+// keyboard_find
+// keyboard_mute => aux_control_button
+// keyboard_volume_up => aux_control_button
+// keyboard_volume_down => aux_control_button
+// keyboard_locking_caps_lock
+// keyboard_locking_num_lock
+// keyboard_locking_scroll_lock
 constexpr value_t keypad_comma(0x5f);
-// iokit_hid_usage_keypad_equal_sign_as400
+// keypad_equal_sign_as400
 constexpr value_t keyboard_international1(0x5e);
-// iokit_hid_usage_keyboard_international2
+// keyboard_international2
 constexpr value_t keyboard_international3(0x5d);
-// iokit_hid_usage_keyboard_international4
-// iokit_hid_usage_keyboard_international5
-// iokit_hid_usage_keyboard_international6
-// iokit_hid_usage_keyboard_international7
-// iokit_hid_usage_keyboard_international8
-// iokit_hid_usage_keyboard_international9
+// keyboard_international4
+// keyboard_international5
+// keyboard_international6
+// keyboard_international7
+// keyboard_international8
+// keyboard_international9
 constexpr value_t keyboard_lang1(0x68);
 constexpr value_t keyboard_lang2(0x66);
-// iokit_hid_usage_keyboard_lang3
-// iokit_hid_usage_keyboard_lang4
-// iokit_hid_usage_keyboard_lang5
-// iokit_hid_usage_keyboard_lang6
-// iokit_hid_usage_keyboard_lang7
-// iokit_hid_usage_keyboard_lang8
-// iokit_hid_usage_keyboard_lang9
-// iokit_hid_usage_keyboard_alternate_erase
-// iokit_hid_usage_keyboard_sys_req_or_attention
-// iokit_hid_usage_keyboard_cancel
-// iokit_hid_usage_keyboard_clear
-// iokit_hid_usage_keyboard_prior
-// iokit_hid_usage_keyboard_return
-// iokit_hid_usage_keyboard_separator
-// iokit_hid_usage_keyboard_out
-// iokit_hid_usage_keyboard_oper
-// iokit_hid_usage_keyboard_clear_or_again
-// iokit_hid_usage_keyboard_cr_sel_or_props
-// iokit_hid_usage_keyboard_ex_sel
+// keyboard_lang3
+// keyboard_lang4
+// keyboard_lang5
+// keyboard_lang6
+// keyboard_lang7
+// keyboard_lang8
+// keyboard_lang9
+// keyboard_alternate_erase
+// keyboard_sys_req_or_attention
+// keyboard_cancel
+// keyboard_clear
+// keyboard_prior
+// keyboard_return
+// keyboard_separator
+// keyboard_out
+// keyboard_oper
+// keyboard_clear_or_again
+// keyboard_cr_sel_or_props
+// keyboard_ex_sel
 
 constexpr value_t keyboard_left_control(0x3b);
 constexpr value_t keyboard_left_shift(0x38);
@@ -207,9 +207,9 @@ constexpr value_t apple_vendor_top_case_keyboard_fn(0x3f); // apple_vendor_top_c
 
 namespace impl {
 #define PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(name) \
-  { type_safe::get(iokit_hid_usage_##name), name }
+  { type_safe::get(iokit_hid_usage::keyboard_or_keypad::name), name }
 
-constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, value_t> usage_page_keyboard_or_keypad_pairs[] = {
+constexpr std::pair<type_safe::underlying_type<iokit_hid_usage::value_t>, value_t> usage_page_keyboard_or_keypad_pairs[] = {
     PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(keyboard_a),
     PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(keyboard_b),
     PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(keyboard_c),
@@ -382,15 +382,25 @@ constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, value_t> usage_
     PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(keyboard_right_gui),
 };
 
-constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, value_t> usage_page_apple_vendor_keyboard_pairs[] = {
-    PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(apple_vendor_keyboard_dashboard),
-    PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(apple_vendor_keyboard_function),
-    PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(apple_vendor_keyboard_launchpad),
-    PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(apple_vendor_keyboard_expose_all),
+#undef PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR
+
+#define PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(name) \
+  { type_safe::get(iokit_hid_usage::apple_vendor_keyboard::name), apple_vendor_keyboard_##name }
+
+constexpr std::pair<type_safe::underlying_type<iokit_hid_usage::value_t>, value_t> usage_page_apple_vendor_keyboard_pairs[] = {
+    PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(dashboard),
+    PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(function),
+    PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(launchpad),
+    PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(expose_all),
 };
 
-constexpr std::pair<type_safe::underlying_type<iokit_hid_usage>, value_t> usage_page_apple_vendor_top_case_pairs[] = {
-    PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(apple_vendor_top_case_keyboard_fn),
+#undef PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR
+
+#define PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(name) \
+  { type_safe::get(iokit_hid_usage::apple_vendor_top_case::name), apple_vendor_top_case_##name }
+
+constexpr std::pair<type_safe::underlying_type<iokit_hid_usage::value_t>, value_t> usage_page_apple_vendor_top_case_pairs[] = {
+    PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR(keyboard_fn),
 };
 
 #undef PQRS_OSX_IOKIT_HID_SYSTEM_KEY_CODE_PAIR
@@ -400,7 +410,7 @@ constexpr auto usage_page_apple_vendor_keyboard_map = frozen::make_unordered_map
 constexpr auto usage_page_apple_vendor_top_case_map = frozen::make_unordered_map(usage_page_apple_vendor_top_case_pairs);
 
 template <typename T>
-inline std::optional<key_code::value_t> find(T& map, iokit_hid_usage usage) {
+inline std::optional<key_code::value_t> find(T& map, iokit_hid_usage::value_t usage) {
   auto it = map.find(type_safe::get(usage));
   if (it != std::end(map)) {
     return it->second;
@@ -410,12 +420,12 @@ inline std::optional<key_code::value_t> find(T& map, iokit_hid_usage usage) {
 } // namespace impl
 } // namespace key_code
 
-inline std::optional<key_code::value_t> make_key_code(iokit_hid_usage_page usage_page, iokit_hid_usage usage) {
-  if (usage_page == iokit_hid_usage_page_keyboard_or_keypad) {
+inline std::optional<key_code::value_t> make_key_code(iokit_hid_usage_page::value_t usage_page, iokit_hid_usage::value_t usage) {
+  if (usage_page == iokit_hid_usage_page::keyboard_or_keypad) {
     return key_code::impl::find(key_code::impl::usage_page_keyboard_or_keypad_map, usage);
-  } else if (usage_page == iokit_hid_usage_page_apple_vendor_keyboard) {
+  } else if (usage_page == iokit_hid_usage_page::apple_vendor_keyboard) {
     return key_code::impl::find(key_code::impl::usage_page_apple_vendor_keyboard_map, usage);
-  } else if (usage_page == iokit_hid_usage_page_apple_vendor_top_case) {
+  } else if (usage_page == iokit_hid_usage_page::apple_vendor_top_case) {
     return key_code::impl::find(key_code::impl::usage_page_apple_vendor_top_case_map, usage);
   }
 

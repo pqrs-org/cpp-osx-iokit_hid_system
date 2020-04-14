@@ -8,8 +8,8 @@ TEST_CASE("make_key_code") {
   //
 
   {
-    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_generic_desktop,
-                                                             pqrs::osx::iokit_hid_usage_generic_desktop_keyboard);
+    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page::generic_desktop,
+                                                             pqrs::osx::iokit_hid_usage::generic_desktop::keyboard);
     REQUIRE(actual == std::nullopt);
   }
 
@@ -18,18 +18,18 @@ TEST_CASE("make_key_code") {
   //
 
   {
-    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_keyboard_or_keypad,
-                                                             pqrs::osx::iokit_hid_usage_keyboard_a);
+    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page::keyboard_or_keypad,
+                                                             pqrs::osx::iokit_hid_usage::keyboard_or_keypad::keyboard_a);
     REQUIRE(actual == pqrs::osx::iokit_hid_system::key_code::keyboard_a);
   }
   {
-    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_keyboard_or_keypad,
-                                                             pqrs::osx::iokit_hid_usage_keyboard_b);
+    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page::keyboard_or_keypad,
+                                                             pqrs::osx::iokit_hid_usage::keyboard_or_keypad::keyboard_b);
     REQUIRE(actual == pqrs::osx::iokit_hid_system::key_code::keyboard_b);
   }
   {
-    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_keyboard_or_keypad,
-                                                             pqrs::osx::iokit_hid_usage_keyboard_reserved);
+    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page::keyboard_or_keypad,
+                                                             pqrs::osx::iokit_hid_usage::keyboard_or_keypad::reserved);
     REQUIRE(actual == std::nullopt);
   }
 
@@ -38,18 +38,18 @@ TEST_CASE("make_key_code") {
   //
 
   {
-    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_apple_vendor_keyboard,
-                                                             pqrs::osx::iokit_hid_usage_apple_vendor_keyboard_dashboard);
+    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page::apple_vendor_keyboard,
+                                                             pqrs::osx::iokit_hid_usage::apple_vendor_keyboard::dashboard);
     REQUIRE(actual == pqrs::osx::iokit_hid_system::key_code::apple_vendor_keyboard_dashboard);
   }
   {
-    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_apple_vendor_keyboard,
-                                                             pqrs::osx::iokit_hid_usage_apple_vendor_keyboard_function);
+    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page::apple_vendor_keyboard,
+                                                             pqrs::osx::iokit_hid_usage::apple_vendor_keyboard::function);
     REQUIRE(actual == pqrs::osx::iokit_hid_system::key_code::apple_vendor_keyboard_function);
   }
   {
-    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_apple_vendor_keyboard,
-                                                             pqrs::osx::iokit_hid_usage_apple_vendor_keyboard_spotlight);
+    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page::apple_vendor_keyboard,
+                                                             pqrs::osx::iokit_hid_usage::apple_vendor_keyboard::spotlight);
     REQUIRE(actual == std::nullopt);
   }
 
@@ -58,13 +58,13 @@ TEST_CASE("make_key_code") {
   //
 
   {
-    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_apple_vendor_top_case,
-                                                             pqrs::osx::iokit_hid_usage_apple_vendor_top_case_keyboard_fn);
+    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page::apple_vendor_top_case,
+                                                             pqrs::osx::iokit_hid_usage::apple_vendor_top_case::keyboard_fn);
     REQUIRE(actual == pqrs::osx::iokit_hid_system::key_code::apple_vendor_top_case_keyboard_fn);
   }
   {
-    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page_apple_vendor_keyboard,
-                                                             pqrs::osx::iokit_hid_usage_apple_vendor_top_case_illumination_down);
+    auto actual = pqrs::osx::iokit_hid_system::make_key_code(pqrs::osx::iokit_hid_usage_page::apple_vendor_keyboard,
+                                                             pqrs::osx::iokit_hid_usage::apple_vendor_top_case::illumination_down);
     REQUIRE(actual == std::nullopt);
   }
 }
