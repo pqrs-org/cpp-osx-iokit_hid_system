@@ -35,6 +35,7 @@ public:
   nod::signal<void(void)> opened;
   nod::signal<void(void)> closed;
   nod::signal<void(const std::string&, kern_return)> error_occurred;
+  nod::signal<void(kern_return)> post_event_error_occurred;
   nod::signal<void(std::optional<bool>)> caps_lock_state_changed;
 
   // Methods
@@ -146,7 +147,7 @@ public:
                                        options);
         if (!r) {
           enqueue_to_dispatcher([this, r] {
-            error_occurred("IOHIDPostEvent is failed.", r);
+            post_event_error_occurred(r);
           });
         }
       }

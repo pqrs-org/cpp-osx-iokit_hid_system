@@ -36,6 +36,12 @@
     [self appendLogMessage:[NSString stringWithUTF8String:ss.str().c_str()]];
   });
 
+  self.client->post_event_error_occurred.connect([self](auto&& r) {
+    std::stringstream ss;
+    ss << "post_event_error_occurred " << r;
+    [self appendLogMessage:[NSString stringWithUTF8String:ss.str().c_str()]];
+  });
+
   self.client->async_start();
 }
 

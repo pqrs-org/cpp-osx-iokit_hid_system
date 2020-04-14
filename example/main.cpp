@@ -36,6 +36,10 @@ int main(void) {
     std::cout << message << " " << r << std::endl;
   });
 
+  client->post_event_error_occurred.connect([](auto&& r) {
+    std::cout << "post_event_error_occurred " << r << std::endl;
+  });
+
   client->caps_lock_state_changed.connect([](auto&& state) {
     if (!state) {
       std::cout << "caps_lock_state_changed: std::nullopt" << std::endl;
