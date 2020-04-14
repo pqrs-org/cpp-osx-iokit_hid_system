@@ -137,7 +137,7 @@ public:
                            event_flags,
                            options] {
       if (connect_) {
-        kern_return r = IOHIDPostEvent(connect_,
+        kern_return r = IOHIDPostEvent(*connect_,
                                        type_safe::get(event_type),
                                        location,
                                        &event_data,
