@@ -9,7 +9,7 @@ clean:
 
 run:
 	bash scripts/codesign.sh build_xcode/build/Release
-	open build_xcode/build/Release/example-app.app
+	open build_xcode/build/Release/iokit-hid-system-example-app.app
 
 update_vendor:
 	rm -rf vendor

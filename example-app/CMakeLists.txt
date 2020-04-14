@@ -1,5 +1,8 @@
 cmake_minimum_required (VERSION 3.9)
-project (example-app)
+
+set(CMAKE_OSX_DEPLOYMENT_TARGET "10.12" CACHE STRING "Minimum OS X deployment version")
+
+project (iokit-hid-system-example-app)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -14,7 +17,7 @@ include_directories(SYSTEM ${CMAKE_CURRENT_LIST_DIR}/vendor/include)
 include_directories(SYSTEM ${CMAKE_CURRENT_LIST_DIR}/../include)
 
 add_executable(
-  example-app
+  iokit-hid-system-example-app
   MACOSX_BUNDLE
   src/AppDelegate.mm
   src/AppDelegate.h
@@ -32,14 +35,14 @@ set_source_files_properties(
 )
 
 set_target_properties(
-  example-app
+  iokit-hid-system-example-app
   PROPERTIES
 
   MACOSX_BUNDLE_INFO_PLIST
   ${CMAKE_CURRENT_LIST_DIR}/Resources/Info.plist
 
   XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER
-  "org.pqrs.cpp-osx-iokit-hid-system.example-app"
+  "org.pqrs.iokit-hid-system-example-app"
 
   XCODE_ATTRIBUTE_ENABLE_HARDENED_RUNTIME
   YES

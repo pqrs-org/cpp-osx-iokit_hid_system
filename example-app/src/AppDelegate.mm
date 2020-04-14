@@ -45,20 +45,34 @@
   pqrs::dispatcher::extra::terminate_shared_dispatcher();
 }
 
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)theApplication {
+  return YES;
+}
+
 - (IBAction)postExposeAll:(id)sender {
-  self.client->async_post_key_code_event(
-      pqrs::osx::iokit_hid_system::event_type::key_down,
-      pqrs::osx::iokit_hid_system::key_code::apple_vendor_keyboard_expose_all,
-      0,
-      false);
+  for (auto event_type : {
+           pqrs::osx::iokit_hid_system::event_type::key_down,
+           pqrs::osx::iokit_hid_system::event_type::key_up,
+       }) {
+    self.client->async_post_key_code_event(
+        event_type,
+        pqrs::osx::iokit_hid_system::key_code::apple_vendor_keyboard_expose_all,
+        0,
+        false);
+  }
 }
 
 - (IBAction)postLaunchpad:(id)sender {
-  self.client->async_post_key_code_event(
-      pqrs::osx::iokit_hid_system::event_type::key_down,
-      pqrs::osx::iokit_hid_system::key_code::apple_vendor_keyboard_launchpad,
-      0,
-      false);
+  for (auto event_type : {
+           pqrs::osx::iokit_hid_system::event_type::key_down,
+           pqrs::osx::iokit_hid_system::event_type::key_up,
+       }) {
+    self.client->async_post_key_code_event(
+        event_type,
+        pqrs::osx::iokit_hid_system::key_code::apple_vendor_keyboard_launchpad,
+        0,
+        false);
+  }
 }
 
 - (void)appendLogMessage:(NSString*)string {

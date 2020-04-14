@@ -17,10 +17,15 @@ int main(void) {
   client->opened.connect([&client] {
     std::cout << "iokit_hid_system opened" << std::endl;
 
-    client->async_post_key_code_event(pqrs::osx::iokit_hid_system::event_type::key_down,
-                                      pqrs::osx::iokit_hid_system::key_code::apple_vendor_keyboard_expose_all,
-                                      0,
-                                      false);
+    for (auto event_type : {
+             pqrs::osx::iokit_hid_system::event_type::key_down,
+             pqrs::osx::iokit_hid_system::event_type::key_up,
+         }) {
+      client->async_post_key_code_event(event_type,
+                                        pqrs::osx::iokit_hid_system::key_code::apple_vendor_keyboard_expose_all,
+                                        0,
+                                        false);
+    }
   });
 
   client->closed.connect([] {
