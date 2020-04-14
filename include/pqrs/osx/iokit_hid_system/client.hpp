@@ -124,6 +124,20 @@ public:
                      kIOHIDSetGlobalEventFlags);
   }
 
+  void async_post_aux_control_button_event(event_type::value_t event_type, aux_control_button::value_t aux_control_button, IOOptionBits flags, bool repeat) {
+    NXEventData event{};
+    event.compound.subType = NX_SUBTYPE_AUX_CONTROL_BUTTONS;
+    event.compound.misc.L[0] = (type_safe::get(aux_control_button) << 16) | (type_safe::get(event_type) << 8) | repeat;
+
+    IOGPoint loc{};
+    async_post_event(event_type::system_defined,
+                     loc,
+                     event,
+                     kNXEventDataVersion,
+                     flags,
+                     kIOHIDSetGlobalEventFlags);
+  }
+
   void async_post_event(event_type::value_t event_type,
                         IOGPoint location,
                         const NXEventData& event_data,

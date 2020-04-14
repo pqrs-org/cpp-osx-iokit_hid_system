@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -722,7 +723,7 @@
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="425" height="264"/>
-                                    <size key="maxSize" width="434" height="10000000"/>
+                                    <size key="maxSize" width="440" height="10000000"/>
                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
@@ -736,15 +737,27 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="K1d-hu-f0D">
+                        <rect key="frame" x="247" y="297" width="71" height="32"/>
+                        <buttonCell key="cell" type="push" title="mute" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VaK-xi-tlr">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="postMute:" target="Voe-Tx-rLC" id="3wX-jd-ym2"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="YWX-Ze-rbo" firstAttribute="centerY" secondItem="o1j-qE-6iY" secondAttribute="centerY" id="1w9-Cq-7ff"/>
                     <constraint firstItem="o1j-qE-6iY" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="7" id="2Fp-0F-rli"/>
+                    <constraint firstItem="K1d-hu-f0D" firstAttribute="leading" secondItem="YWX-Ze-rbo" secondAttribute="trailing" constant="40" id="9Ti-Rh-pBj"/>
                     <constraint firstItem="alb-9Y-E37" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="DEh-GD-KPi"/>
                     <constraint firstAttribute="trailing" secondItem="alb-9Y-E37" secondAttribute="trailing" constant="20" id="MMC-6w-roW"/>
                     <constraint firstAttribute="bottom" secondItem="alb-9Y-E37" secondAttribute="bottom" constant="20" id="TEc-Uk-cVU"/>
                     <constraint firstItem="alb-9Y-E37" firstAttribute="top" secondItem="o1j-qE-6iY" secondAttribute="bottom" constant="20" id="Tc8-5A-Yjp"/>
                     <constraint firstItem="YWX-Ze-rbo" firstAttribute="leading" secondItem="o1j-qE-6iY" secondAttribute="trailing" constant="10" id="h63-rd-q85"/>
+                    <constraint firstItem="K1d-hu-f0D" firstAttribute="centerY" secondItem="YWX-Ze-rbo" secondAttribute="centerY" id="qvF-4g-ba9"/>
                     <constraint firstItem="o1j-qE-6iY" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="wYQ-r2-LeK"/>
                 </constraints>
             </view>

@@ -81,6 +81,19 @@
   }
 }
 
+- (IBAction)postMute:(id)sender {
+  for (auto event_type : {
+           pqrs::osx::iokit_hid_system::event_type::key_down,
+           pqrs::osx::iokit_hid_system::event_type::key_up,
+       }) {
+    self.client->async_post_aux_control_button_event(
+        event_type,
+        pqrs::osx::iokit_hid_system::aux_control_button::mute,
+        0,
+        false);
+  }
+}
+
 - (void)appendLogMessage:(NSString*)string {
   @weakify(self);
   dispatch_async(dispatch_get_main_queue(), ^{
