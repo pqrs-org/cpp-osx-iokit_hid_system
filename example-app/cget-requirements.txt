@@ -1,3 +1,4 @@
+pqrs-org/cpp-hid
 pqrs-org/cpp-osx-iokit_service_monitor
 pqrs-org/objc-weakify
 serge-sans-paille/frozen
