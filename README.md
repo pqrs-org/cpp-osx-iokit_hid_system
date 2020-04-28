@@ -3,7 +3,7 @@
 
 # cpp-osx-iokit_hid_system
 
-IOKit type definitions.
+A client of IOHIDSystem.
 
 ## Requirements
 
